@@ -59,6 +59,7 @@
             this.PO_label_editor.Size = new System.Drawing.Size(224, 25);
             this.PO_label_editor.TabIndex = 1;
             this.PO_label_editor.Text = "Purchase Order Number";
+            this.PO_label_editor.Click += new System.EventHandler(this.PO_label_editor_Click);
             // 
             // textBox_PON
             // 
@@ -67,6 +68,7 @@
             this.textBox_PON.Name = "textBox_PON";
             this.textBox_PON.Size = new System.Drawing.Size(235, 30);
             this.textBox_PON.TabIndex = 2;
+            this.textBox_PON.TextChanged += new System.EventHandler(this.TextBox_PON_TextChanged);
             // 
             // textBox_OrderTotal
             // 
@@ -86,6 +88,7 @@
             this.label1.Size = new System.Drawing.Size(166, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Order Total(GPB)";
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // textBox_Quantity
             // 
@@ -94,6 +97,7 @@
             this.textBox_Quantity.Name = "textBox_Quantity";
             this.textBox_Quantity.Size = new System.Drawing.Size(235, 30);
             this.textBox_Quantity.TabIndex = 6;
+            this.textBox_Quantity.TextChanged += new System.EventHandler(this.TextBox_Quantity_TextChanged);
             // 
             // label2
             // 
@@ -104,6 +108,7 @@
             this.label2.Size = new System.Drawing.Size(85, 25);
             this.label2.TabIndex = 5;
             this.label2.Text = "Quantity";
+            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // textBox_Supplier
             // 
@@ -112,6 +117,7 @@
             this.textBox_Supplier.Name = "textBox_Supplier";
             this.textBox_Supplier.Size = new System.Drawing.Size(235, 30);
             this.textBox_Supplier.TabIndex = 8;
+            this.textBox_Supplier.TextChanged += new System.EventHandler(this.TextBox_Supplier_TextChanged);
             // 
             // label3
             // 
@@ -122,6 +128,7 @@
             this.label3.Size = new System.Drawing.Size(84, 25);
             this.label3.TabIndex = 7;
             this.label3.Text = "Supplier";
+            this.label3.Click += new System.EventHandler(this.Label3_Click);
             // 
             // dateTimePicker_POD
             // 
@@ -130,6 +137,7 @@
             this.dateTimePicker_POD.Name = "dateTimePicker_POD";
             this.dateTimePicker_POD.Size = new System.Drawing.Size(235, 30);
             this.dateTimePicker_POD.TabIndex = 10;
+            this.dateTimePicker_POD.ValueChanged += new System.EventHandler(this.DateTimePicker_POD_ValueChanged);
             // 
             // dateTimePicker_DD
             // 
@@ -138,6 +146,7 @@
             this.dateTimePicker_DD.Name = "dateTimePicker_DD";
             this.dateTimePicker_DD.Size = new System.Drawing.Size(235, 30);
             this.dateTimePicker_DD.TabIndex = 12;
+            this.dateTimePicker_DD.ValueChanged += new System.EventHandler(this.DateTimePicker_DD_ValueChanged);
             // 
             // comboBox_Approval
             // 
@@ -150,6 +159,7 @@
             this.comboBox_Approval.Name = "comboBox_Approval";
             this.comboBox_Approval.Size = new System.Drawing.Size(235, 33);
             this.comboBox_Approval.TabIndex = 13;
+            this.comboBox_Approval.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Approval_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -160,6 +170,7 @@
             this.label6.Size = new System.Drawing.Size(90, 25);
             this.label6.TabIndex = 14;
             this.label6.Text = "Approval";
+            this.label6.Click += new System.EventHandler(this.Label6_Click);
             // 
             // btn_Insert
             // 
@@ -178,6 +189,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(506, 240);
             this.dataGridView1.TabIndex = 16;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
             // btn_update
             // 
@@ -218,6 +230,7 @@
             this.label4.Size = new System.Drawing.Size(128, 25);
             this.label4.TabIndex = 20;
             this.label4.Text = "Delivery Date";
+            this.label4.Click += new System.EventHandler(this.Label4_Click_1);
             // 
             // label5
             // 
@@ -228,6 +241,7 @@
             this.label5.Size = new System.Drawing.Size(196, 25);
             this.label5.TabIndex = 21;
             this.label5.Text = "Purchase Order Date";
+            this.label5.Click += new System.EventHandler(this.Label5_Click);
             // 
             // FormPurchaseOrder
             // 

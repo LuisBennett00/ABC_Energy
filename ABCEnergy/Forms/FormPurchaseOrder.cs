@@ -122,5 +122,75 @@ namespace ABCEnergy.Forms
         {
 
         }
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Label4_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ComboBox_Approval_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DateTimePicker_DD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DateTimePicker_POD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox_Supplier_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox_Quantity_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox_PON_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PO_label_editor_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
