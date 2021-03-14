@@ -36,13 +36,11 @@ namespace ABCEnergy.Forms
                     btn.FlatAppearance.BorderColor = ThemeColour.SecondaryColor;
                 }
             }
-            label4.ForeColor = ThemeColour.SecondaryColor;
-            label5.ForeColor = ThemeColour.PrimaryColor;
         }
 
         private void Label4_Click(object sender, EventArgs e)
         {
-           // SqlCommand command = new SqlCommand("update ABCEnergy_PurchaseOrders_ set PurchaseOrderDate = '"+dateTimePicker_POD.Text+"', DeliveryDate = '" + dateTimePicker_DD + "'", con);
+
         }
 
         SqlConnection con = new SqlConnection("Data Source=THE_BEAST_00;Initial Catalog=ABCEnergy;Integrated Security=True");
@@ -76,16 +74,18 @@ namespace ABCEnergy.Forms
         private void Btn_update_Click(object sender, EventArgs e)
         {
             con.Open();
-            SqlCommand command = new SqlCommand("update ABCEnergy_PurchaseOrders_ set PurchaseOrderDate = '" + dateTimePicker_POD.Text +
-                                                                                             "', DeliveryDate = '" + dateTimePicker_DD.Text + 
-                                                                                             "', Quantity = '" + textBox_Quantity.Text +
-                                                                                             "', Supplier = '" + textBox_Supplier.Text +
-                                                                                             "', OrderTotal = '" + textBox_OrderTotal.Text +
-                                                                                             "', Approval = '" + comboBox_Approval.Text +
-                                                                                             "', Where PurchaseOrderNumber = '"+ int.Parse(textBox_PON.Text), con);
-            command.ExecuteNonQuery();
+            SqlCommand cmd = new SqlCommand("Update ABCEnergy_PurchaseOrders_ set PurchaseOrderDate=@PurchaseOrderDate, Quantity = @Quantity, Supplier = @Supplier, OrderTotal = @OrderTotal, Approval = @Approval WHERE PurchaseOrderNumber = @PurchaseOrderNumber", con);
+            cmd.Parameters.AddWithValue("@PurchaseOrderNumber", int.Parse(textBox_PON.Text));
+            cmd.Parameters.AddWithValue("@PurchaseOrderDate",   DateTime.Parse(dateTimePicker_POD.Text));
+            cmd.Parameters.AddWithValue("@DeliveryDate",        DateTime.Parse(dateTimePicker_DD.Text));
+            cmd.Parameters.AddWithValue("@Quantity",            int.Parse(textBox_Quantity.Text));
+            cmd.Parameters.AddWithValue("@Supplier",            textBox_Supplier.Text);
+            cmd.Parameters.AddWithValue("@OrderTotal",          float.Parse(textBox_OrderTotal.Text));
+            cmd.Parameters.AddWithValue("@Approval",            comboBox_Approval.Text);
+            cmd.ExecuteNonQuery();
+
             con.Close();
-            MessageBox.Show("Succesfully updated Purchase Order");
+            MessageBox.Show("Successfully Updated");
             bindData();
         }
 
@@ -116,6 +116,11 @@ namespace ABCEnergy.Forms
             DataTable dt = new DataTable();
             sd.Fill(dt);
             dataGridView1.DataSource = dt;
+        }
+
+        private void TextBox_OrderTotal_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
