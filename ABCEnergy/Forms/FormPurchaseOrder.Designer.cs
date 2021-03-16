@@ -51,7 +51,16 @@
             this.btn_stop = new System.Windows.Forms.Button();
             this.btn_resume = new System.Windows.Forms.Button();
             this.btn_pause = new System.Windows.Forms.Button();
+            this.trackBar_SpeechRate = new System.Windows.Forms.TrackBar();
+            this.trackBar_Volume = new System.Windows.Forms.TrackBar();
+            this.label_speechRate = new System.Windows.Forms.Label();
+            this.label_volume = new System.Windows.Forms.Label();
+            this.ddlVoices = new System.Windows.Forms.ComboBox();
+            this.btn_listen = new System.Windows.Forms.Button();
+            this.btn_stop_listen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_SpeechRate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_Volume)).BeginInit();
             this.SuspendLayout();
             // 
             // PO_label_editor
@@ -259,7 +268,7 @@
             // 
             // btn_stop
             // 
-            this.btn_stop.Location = new System.Drawing.Point(534, 109);
+            this.btn_stop.Location = new System.Drawing.Point(534, 51);
             this.btn_stop.Name = "btn_stop";
             this.btn_stop.Size = new System.Drawing.Size(75, 23);
             this.btn_stop.TabIndex = 23;
@@ -269,7 +278,7 @@
             // 
             // btn_resume
             // 
-            this.btn_resume.Location = new System.Drawing.Point(534, 80);
+            this.btn_resume.Location = new System.Drawing.Point(615, 22);
             this.btn_resume.Name = "btn_resume";
             this.btn_resume.Size = new System.Drawing.Size(75, 23);
             this.btn_resume.TabIndex = 24;
@@ -279,7 +288,7 @@
             // 
             // btn_pause
             // 
-            this.btn_pause.Location = new System.Drawing.Point(534, 51);
+            this.btn_pause.Location = new System.Drawing.Point(615, 51);
             this.btn_pause.Name = "btn_pause";
             this.btn_pause.Size = new System.Drawing.Size(75, 23);
             this.btn_pause.TabIndex = 25;
@@ -287,11 +296,80 @@
             this.btn_pause.UseVisualStyleBackColor = true;
             this.btn_pause.Click += new System.EventHandler(this.Btn_pause_Click);
             // 
+            // trackBar_SpeechRate
+            // 
+            this.trackBar_SpeechRate.Location = new System.Drawing.Point(534, 108);
+            this.trackBar_SpeechRate.Name = "trackBar_SpeechRate";
+            this.trackBar_SpeechRate.Size = new System.Drawing.Size(183, 45);
+            this.trackBar_SpeechRate.TabIndex = 26;
+            this.trackBar_SpeechRate.Scroll += new System.EventHandler(this.TrackBar_SpeechRate_Scroll);
+            // 
+            // trackBar_Volume
+            // 
+            this.trackBar_Volume.Location = new System.Drawing.Point(534, 190);
+            this.trackBar_Volume.Name = "trackBar_Volume";
+            this.trackBar_Volume.Size = new System.Drawing.Size(183, 45);
+            this.trackBar_Volume.TabIndex = 27;
+            this.trackBar_Volume.Scroll += new System.EventHandler(this.TrackBar_Volume_Scroll);
+            // 
+            // label_speechRate
+            // 
+            this.label_speechRate.AutoSize = true;
+            this.label_speechRate.Location = new System.Drawing.Point(531, 92);
+            this.label_speechRate.Name = "label_speechRate";
+            this.label_speechRate.Size = new System.Drawing.Size(93, 13);
+            this.label_speechRate.TabIndex = 28;
+            this.label_speechRate.Text = "label_speechRate";
+            // 
+            // label_volume
+            // 
+            this.label_volume.AutoSize = true;
+            this.label_volume.Location = new System.Drawing.Point(531, 174);
+            this.label_volume.Name = "label_volume";
+            this.label_volume.Size = new System.Drawing.Size(35, 13);
+            this.label_volume.TabIndex = 29;
+            this.label_volume.Text = "label8";
+            // 
+            // ddlVoices
+            // 
+            this.ddlVoices.FormattingEnabled = true;
+            this.ddlVoices.Location = new System.Drawing.Point(534, 247);
+            this.ddlVoices.Name = "ddlVoices";
+            this.ddlVoices.Size = new System.Drawing.Size(121, 21);
+            this.ddlVoices.TabIndex = 30;
+            // 
+            // btn_listen
+            // 
+            this.btn_listen.Location = new System.Drawing.Point(580, 390);
+            this.btn_listen.Name = "btn_listen";
+            this.btn_listen.Size = new System.Drawing.Size(75, 23);
+            this.btn_listen.TabIndex = 31;
+            this.btn_listen.Text = "Listen";
+            this.btn_listen.UseVisualStyleBackColor = true;
+            this.btn_listen.Click += new System.EventHandler(this.Btn_listen_Click);
+            // 
+            // btn_stop_listen
+            // 
+            this.btn_stop_listen.Location = new System.Drawing.Point(679, 390);
+            this.btn_stop_listen.Name = "btn_stop_listen";
+            this.btn_stop_listen.Size = new System.Drawing.Size(167, 23);
+            this.btn_stop_listen.TabIndex = 32;
+            this.btn_stop_listen.Text = "Stop Listening";
+            this.btn_stop_listen.UseVisualStyleBackColor = true;
+            this.btn_stop_listen.Click += new System.EventHandler(this.Btn_stop_listen_Click);
+            // 
             // FormPurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 706);
+            this.ClientSize = new System.Drawing.Size(892, 706);
+            this.Controls.Add(this.btn_stop_listen);
+            this.Controls.Add(this.btn_listen);
+            this.Controls.Add(this.ddlVoices);
+            this.Controls.Add(this.label_volume);
+            this.Controls.Add(this.label_speechRate);
+            this.Controls.Add(this.trackBar_Volume);
+            this.Controls.Add(this.trackBar_SpeechRate);
             this.Controls.Add(this.btn_pause);
             this.Controls.Add(this.btn_resume);
             this.Controls.Add(this.btn_stop);
@@ -319,6 +397,8 @@
             this.Text = "FormPurchaseOrder";
             this.Load += new System.EventHandler(this.FormPurchaseOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_SpeechRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_Volume)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,5 +428,12 @@
         private System.Windows.Forms.Button btn_stop;
         private System.Windows.Forms.Button btn_resume;
         private System.Windows.Forms.Button btn_pause;
+        private System.Windows.Forms.TrackBar trackBar_SpeechRate;
+        private System.Windows.Forms.TrackBar trackBar_Volume;
+        private System.Windows.Forms.Label label_speechRate;
+        private System.Windows.Forms.Label label_volume;
+        private System.Windows.Forms.ComboBox ddlVoices;
+        private System.Windows.Forms.Button btn_listen;
+        private System.Windows.Forms.Button btn_stop_listen;
     }
 }

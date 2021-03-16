@@ -8,8 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 using System.Speech;
 using System.Speech.Synthesis;
+using System.Speech.Recognition;
+using System.Threading;
 
 /*The Purchase Order Form item code. Here all elements that are used within this page are programmed. This includes code that manipulates the
  data grid view object used to display records of Purchase Orders that have been saved. Through using a number of tools for data input, buttons
@@ -20,12 +23,20 @@ namespace ABCEnergy.Forms
 {
     public partial class FormPurchaseOrder : Form
     {
+
+        private int speechRate = 0;
+        private int speechVolume = 50;
+
         public FormPurchaseOrder()
         {
             InitializeComponent();
 
             //bindData is called to display current purchase orders saved in the SQL database
             bindData();
+
+            label_speechRate.Text = speechRate.ToString(CultureInfo.InvariantCulture);
+            label_speechRate.Text = speechVolume.ToString(CultureInfo.InvariantCulture);
+            AddInstalledVoicesToList();
         }
 
         private void FormPurchaseOrder_Load(object sender, EventArgs e)
@@ -185,13 +196,42 @@ namespace ABCEnergy.Forms
         }
 
         SpeechSynthesizer reader = new SpeechSynthesizer();
+        PromptBuilder pb = new PromptBuilder();
+        SpeechRecognitionEngine sre = new SpeechRecognitionEngine();
+        Choices clist = new Choices();
+
         private void Btn_speak_Click(object sender, EventArgs e)
         {
-            if(textBox_PON.Text != null)
+            if((textBox_PON.Text != null) && (dateTimePicker_POD.Text != null) && (dateTimePicker_DD.Text != null) && (textBox_Quantity.Text != null) && (textBox_Supplier.Text != null) && (textBox_OrderTotal.Text != null) && (comboBox_Approval.Text != null))
             {
-                reader.Dispose();
-                reader = new SpeechSynthesizer();
-                reader.SpeakAsync(textBox_PON.Text);
+                using (SpeechSynthesizer synth = new SpeechSynthesizer { Volume = speechVolume, Rate = speechRate })
+                {
+                    synth.SelectVoice(ddlVoices.Text);
+                    //synth.Dispose();
+                    //synth = new SpeechSynthesizer();
+                    synth.Speak(PO_label_editor.Text);
+                    synth.Speak(textBox_PON.Text);
+
+                    synth.Speak(label5.Text);
+                    synth.Speak(dateTimePicker_POD.Text);
+
+                    synth.Speak(label4.Text);
+                    synth.Speak(dateTimePicker_DD.Text);
+
+                    synth.Speak(label2.Text);
+                    synth.Speak(textBox_Quantity.Text);
+
+                    synth.Speak(label3.Text);
+                    synth.Speak(textBox_Supplier.Text);
+
+                    synth.Speak(label1.Text);
+                    synth.Speak(textBox_OrderTotal.Text);
+
+                    synth.Speak(label6.Text);
+                    synth.Speak(comboBox_Approval.Text);
+                    
+                }
+
             }
             else
             {
@@ -224,6 +264,29 @@ namespace ABCEnergy.Forms
             {
                 reader.Dispose();
             }
+        }
+        private void TrackBar_SpeechRate_Scroll(object sender, EventArgs e)
+        {
+            speechRate = trackBar_SpeechRate.Value;
+            label_speechRate.Text = speechRate.ToString(CultureInfo.InvariantCulture);
+
+        }
+        private void TrackBar_Volume_Scroll(object sender, EventArgs e)
+        {
+            speechVolume = trackBar_Volume.Value;
+            label_volume.Text = speechVolume.ToString(CultureInfo.InvariantCulture);
+        }
+        private void AddInstalledVoicesToList()
+        {
+            using (SpeechSynthesizer synth = new SpeechSynthesizer())
+            {
+                foreach (var voice in synth.GetInstalledVoices())
+                {
+                    ddlVoices.Items.Add(voice.VoiceInfo.Name);
+                }
+            }
+
+            ddlVoices.SelectedIndex = 0;
         }
 
         private void TextBox_OrderTotal_TextChanged(object sender, EventArgs e)
@@ -301,5 +364,35 @@ namespace ABCEnergy.Forms
 
         }
 
+        private void Btn_listen_Click(object sender, EventArgs e)
+        {
+            btn_listen.Enabled = false;
+            btn_stop_listen.Enabled = true;
+            //clist.Add(new string[] { "hello1", "hello2", "hello3", "hello4" });
+            //Grammar gr = new Grammar(new GrammarBuilder(clist));
+            Grammar gr = new DictationGrammar();
+            try
+            {
+                sre.RequestRecognizerUpdate();
+                sre.LoadGrammar(gr);
+                sre.SpeechRecognized += sre_SpeechRecognized;
+                sre.SetInputToDefaultAudioDevice();
+                sre.RecognizeAsync(RecognizeMode.Multiple);
+            }
+            catch (Exception ex ) { MessageBox.Show(ex.Message, "Error"); }
+        }
+
+        private void sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            textBox_PON.Text = textBox_PON + e.Result.Text.ToString() + Environment.NewLine;
+        }
+
+        private void Btn_stop_listen_Click(object sender, EventArgs e)
+        {
+            sre.RecognizeAsyncStop();
+            btn_listen.Enabled = true;
+            btn_stop_listen.Enabled = false;
+        }
     }
 }
