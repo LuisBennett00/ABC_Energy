@@ -47,6 +47,10 @@
             this.btn_Search = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btn_speak = new System.Windows.Forms.Button();
+            this.btn_stop = new System.Windows.Forms.Button();
+            this.btn_resume = new System.Windows.Forms.Button();
+            this.btn_pause = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -243,11 +247,55 @@
             this.label5.Text = "Purchase Order Date";
             this.label5.Click += new System.EventHandler(this.Label5_Click);
             // 
+            // btn_speak
+            // 
+            this.btn_speak.Location = new System.Drawing.Point(534, 22);
+            this.btn_speak.Name = "btn_speak";
+            this.btn_speak.Size = new System.Drawing.Size(75, 23);
+            this.btn_speak.TabIndex = 22;
+            this.btn_speak.Text = "Speak";
+            this.btn_speak.UseVisualStyleBackColor = true;
+            this.btn_speak.Click += new System.EventHandler(this.Btn_speak_Click);
+            // 
+            // btn_stop
+            // 
+            this.btn_stop.Location = new System.Drawing.Point(534, 109);
+            this.btn_stop.Name = "btn_stop";
+            this.btn_stop.Size = new System.Drawing.Size(75, 23);
+            this.btn_stop.TabIndex = 23;
+            this.btn_stop.Text = "Stop";
+            this.btn_stop.UseVisualStyleBackColor = true;
+            this.btn_stop.Click += new System.EventHandler(this.Btn_stop_Click);
+            // 
+            // btn_resume
+            // 
+            this.btn_resume.Location = new System.Drawing.Point(534, 80);
+            this.btn_resume.Name = "btn_resume";
+            this.btn_resume.Size = new System.Drawing.Size(75, 23);
+            this.btn_resume.TabIndex = 24;
+            this.btn_resume.Text = "Resume";
+            this.btn_resume.UseVisualStyleBackColor = true;
+            this.btn_resume.Click += new System.EventHandler(this.Btn_resume_Click);
+            // 
+            // btn_pause
+            // 
+            this.btn_pause.Location = new System.Drawing.Point(534, 51);
+            this.btn_pause.Name = "btn_pause";
+            this.btn_pause.Size = new System.Drawing.Size(75, 23);
+            this.btn_pause.TabIndex = 25;
+            this.btn_pause.Text = "Pause";
+            this.btn_pause.UseVisualStyleBackColor = true;
+            this.btn_pause.Click += new System.EventHandler(this.Btn_pause_Click);
+            // 
             // FormPurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 706);
+            this.ClientSize = new System.Drawing.Size(800, 706);
+            this.Controls.Add(this.btn_pause);
+            this.Controls.Add(this.btn_resume);
+            this.Controls.Add(this.btn_stop);
+            this.Controls.Add(this.btn_speak);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btn_Search);
@@ -296,5 +344,9 @@
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btn_speak;
+        private System.Windows.Forms.Button btn_stop;
+        private System.Windows.Forms.Button btn_resume;
+        private System.Windows.Forms.Button btn_pause;
     }
 }

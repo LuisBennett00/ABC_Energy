@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Speech;
+using System.Speech.Synthesis;
 
 /*The Purchase Order Form item code. Here all elements that are used within this page are programmed. This includes code that manipulates the
  data grid view object used to display records of Purchase Orders that have been saved. Through using a number of tools for data input, buttons
@@ -182,6 +184,48 @@ namespace ABCEnergy.Forms
             dataGridView1.DataSource = dt;
         }
 
+        SpeechSynthesizer reader = new SpeechSynthesizer();
+        private void Btn_speak_Click(object sender, EventArgs e)
+        {
+            if(textBox_PON.Text != null)
+            {
+                reader.Dispose();
+                reader = new SpeechSynthesizer();
+                reader.SpeakAsync(textBox_PON.Text);
+            }
+            else
+            {
+                MessageBox.Show("Please eneter text first!");
+            }
+        }
+        private void Btn_pause_Click(object sender, EventArgs e)
+        {
+            if(reader != null)
+            {
+                if (reader.State == SynthesizerState.Speaking)
+                {
+                    reader.Pause();
+                }
+            }
+        }
+        private void Btn_resume_Click(object sender, EventArgs e)
+        {
+            if (reader != null)
+            {
+                if (reader.State == SynthesizerState.Paused)
+                {
+                    reader.Resume();
+                }
+            }
+        }
+        private void Btn_stop_Click(object sender, EventArgs e)
+        {
+            if(reader != null)
+            {
+                reader.Dispose();
+            }
+        }
+
         private void TextBox_OrderTotal_TextChanged(object sender, EventArgs e)
         {
 
@@ -256,5 +300,6 @@ namespace ABCEnergy.Forms
         {
 
         }
+
     }
 }
