@@ -384,15 +384,175 @@ namespace ABCEnergy.Forms
 
         private void sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            //throw new NotImplementedException();
             textBox_PON.Text = textBox_PON + e.Result.Text.ToString() + Environment.NewLine;
         }
 
-        private void Btn_stop_listen_Click(object sender, EventArgs e)
+        private void stopListening()
         {
             sre.RecognizeAsyncStop();
             btn_listen.Enabled = true;
             btn_stop_listen.Enabled = false;
+        }
+
+        private void Btn_stop_listen_Click(object sender, EventArgs e)
+        {
+            stopListening();
+            //sre.RecognizeAsyncStop();
+            //btn_listen.Enabled = true;
+            //btn_stop_listen.Enabled = false;
+        }
+
+        private void Btn_Listen_POD_Click(object sender, EventArgs e)
+        {
+            btn_listen.Enabled = false;
+            btn_stop_listen.Enabled = true;
+            Grammar gr = new DictationGrammar();
+            try
+            {
+                sre.RequestRecognizerUpdate();
+                sre.LoadGrammar(gr);
+                sre.SpeechRecognized += sre_SpeechRecognized_POD;
+                sre.SetInputToDefaultAudioDevice();
+                sre.RecognizeAsync(RecognizeMode.Multiple);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
+        }
+
+        private void sre_SpeechRecognized_POD(object sender, SpeechRecognizedEventArgs e)
+        {
+            dateTimePicker_POD.Text = dateTimePicker_POD + e.Result.Text.ToString() + Environment.NewLine;
+        }
+
+        private void Btn_Listen_DD_Click(object sender, EventArgs e)
+        {
+            btn_listen.Enabled = false;
+            btn_stop_listen.Enabled = true;
+            Grammar gr = new DictationGrammar();
+            try
+            {
+                sre.RequestRecognizerUpdate();
+                sre.LoadGrammar(gr);
+                sre.SpeechRecognized += sre_SpeechRecognized_DD;
+                sre.SetInputToDefaultAudioDevice();
+                sre.RecognizeAsync(RecognizeMode.Multiple);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
+        }
+        private void sre_SpeechRecognized_DD(object sender, SpeechRecognizedEventArgs e)
+        {
+            dateTimePicker_DD.Text = dateTimePicker_DD + e.Result.Text.ToString() + Environment.NewLine;
+        }
+
+        private void Btn_Listen_Quantity_Click(object sender, EventArgs e)
+        {
+            btn_listen.Enabled = false;
+            btn_stop_listen.Enabled = true;
+            Grammar gr = new DictationGrammar();
+            try
+            {
+                sre.RequestRecognizerUpdate();
+                sre.LoadGrammar(gr);
+                sre.SpeechRecognized += sre_SpeechRecognized_Quanitity;
+                sre.SetInputToDefaultAudioDevice();
+                sre.RecognizeAsync(RecognizeMode.Multiple);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
+        }
+        private void sre_SpeechRecognized_Quanitity(object sender, SpeechRecognizedEventArgs e)
+        {
+            textBox_Quantity.Text = textBox_Quantity + e.Result.Text.ToString() + Environment.NewLine;
+        }
+
+        private void Btn_Listen_Supplier_Click(object sender, EventArgs e)
+        {
+            btn_listen.Enabled = false;
+            btn_stop_listen.Enabled = true;
+            Grammar gr = new DictationGrammar();
+            try
+            {
+                sre.RequestRecognizerUpdate();
+                sre.LoadGrammar(gr);
+                sre.SpeechRecognized += sre_SpeechRecognized_Supplier;
+                sre.SetInputToDefaultAudioDevice();
+                sre.RecognizeAsync(RecognizeMode.Multiple);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
+        }
+
+        private void sre_SpeechRecognized_Supplier(object sender, SpeechRecognizedEventArgs e)
+        {
+            textBox_Supplier.Text = textBox_Supplier + e.Result.Text.ToString() + Environment.NewLine;
+        }
+
+        private void Btn_Listen_OrderTotal_Click(object sender, EventArgs e)
+        {
+            btn_listen.Enabled = false;
+            btn_stop_listen.Enabled = true;
+            Grammar gr = new DictationGrammar();
+            try
+            {
+                sre.RequestRecognizerUpdate();
+                sre.LoadGrammar(gr);
+                sre.SpeechRecognized += sre_SpeechRecognized_OrderTotal;
+                sre.SetInputToDefaultAudioDevice();
+                sre.RecognizeAsync(RecognizeMode.Multiple);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
+        }
+        private void sre_SpeechRecognized_OrderTotal(object sender, SpeechRecognizedEventArgs e)
+        {
+            textBox_OrderTotal.Text = textBox_OrderTotal + e.Result.Text.ToString() + Environment.NewLine;
+        }
+
+        private void Btn_Listen_Approval_Click(object sender, EventArgs e)
+        {
+            btn_listen.Enabled = false;
+            btn_stop_listen.Enabled = true;
+            clist.Add(new string[] { "Approved", "Not Approved" });
+            Grammar gr = new Grammar(new GrammarBuilder(clist));
+            try
+            {
+                sre.RequestRecognizerUpdate();
+                sre.LoadGrammar(gr);
+                sre.SpeechRecognized += sre_SpeechRecognized_Approval;
+                sre.SetInputToDefaultAudioDevice();
+                sre.RecognizeAsync(RecognizeMode.Multiple);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
+        }
+        private void sre_SpeechRecognized_Approval(object sender, SpeechRecognizedEventArgs e)
+        {
+            comboBox_Approval.Text = comboBox_Approval + e.Result.Text.ToString() + Environment.NewLine;
+        }
+
+        private void Btn_stopListening_POD_Click(object sender, EventArgs e)
+        {
+            stopListening();
+        }
+
+        private void Btn_stopListening_DD_Click(object sender, EventArgs e)
+        {
+            stopListening();
+        }
+
+        private void Btn_stopListening_Quantity_Click(object sender, EventArgs e)
+        {
+            stopListening();
+        }
+
+        private void Btn_stopListening_Supplier_Click(object sender, EventArgs e)
+        {
+            stopListening();
+        }
+
+        private void Btn_stopListening_OrderTotal_Click(object sender, EventArgs e)
+        {
+            stopListening();
+        }
+
+        private void Btn_stopListening_Approval_Click(object sender, EventArgs e)
+        {
+            stopListening();
         }
     }
 }

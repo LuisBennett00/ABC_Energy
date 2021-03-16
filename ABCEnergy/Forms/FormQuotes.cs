@@ -8,6 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
+using System.Speech;
+using System.Speech.Synthesis;
+using System.Speech.Recognition;
+using System.Threading;
 
 namespace ABCEnergy.Forms
 {
@@ -18,9 +23,11 @@ namespace ABCEnergy.Forms
         DateTime localDate = new DateTime(2021, 03, 03);
         String QTapproved = "Approved";
         String QTUnapproved = "Un-approved";
-        
-        
-        
+        private int speechRate = 0;
+        private int speechVolume = 50;
+
+
+
         /*Allow for a connection between the application and the database through a connection string.
          The connection string contains the information that the provider needs to know to establish a connection
          to the database. Connection string is defines due to its constant use throughout functions, these functions
@@ -33,6 +40,10 @@ namespace ABCEnergy.Forms
 
             //bindData is called to display current purchase orders saved in the SQL database
             bindData();
+
+            //label_speechRate.Text = speechRate.ToString(CultureInfo.InvariantCulture);
+            //label_speechRate.Text = speechVolume.ToString(CultureInfo.InvariantCulture);
+            //AddInstalledVoicesToList();
         }
 
         private void FormQuotes_Load(object sender, EventArgs e)
