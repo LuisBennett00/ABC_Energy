@@ -1,0 +1,16 @@
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\bin\Debug\ABCEnergy.exe.config
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\bin\Debug\ABCEnergy.exe
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\bin\Debug\ABCEnergy.pdb
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\obj\Debug\ABCEnergy.Form1.resources
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\obj\Debug\ABCEnergy.Forms.FormContracts.resources
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\obj\Debug\ABCEnergy.Forms.FormProducts.resources
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\obj\Debug\ABCEnergy.Forms.FormPurchaseOrder.resources
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\obj\Debug\ABCEnergy.Forms.FormQuotes.resources
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\obj\Debug\ABCEnergy.Properties.Resources.resources
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\obj\Debug\ABCEnergy.csproj.GenerateResource.cache
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\obj\Debug\ABCEnergy.csproj.CoreCompileInputs.cache
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\obj\Debug\ABCEnergy.exe
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\obj\Debug\ABCEnergy.pdb
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\bin\Debug\localDataBase.mdf
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\bin\Debug\localDataBase_log.ldf
+X:\ABC_Energy-master\ABC_Energy-Accounting_PurchaseOrder\ABC_Energy-Accounting_PurchaseOrder\ABCEnergy\obj\Debug\ABCEnergy.csprojAssemblyReference.cache
