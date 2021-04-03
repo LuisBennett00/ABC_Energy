@@ -1,0 +1,11 @@
+C:\Users\lee_c\Documents\Uni\Case Studies\Assignment 2\login\login\bin\Debug\login.exe.config
+C:\Users\lee_c\Documents\Uni\Case Studies\Assignment 2\login\login\bin\Debug\login.exe
+C:\Users\lee_c\Documents\Uni\Case Studies\Assignment 2\login\login\bin\Debug\login.pdb
+C:\Users\lee_c\Documents\Uni\Case Studies\Assignment 2\login\login\obj\Debug\login.csprojAssemblyReference.cache
+C:\Users\lee_c\Documents\Uni\Case Studies\Assignment 2\login\login\obj\Debug\login.Properties.Resources.resources
+C:\Users\lee_c\Documents\Uni\Case Studies\Assignment 2\login\login\obj\Debug\login.csproj.GenerateResource.cache
+C:\Users\lee_c\Documents\Uni\Case Studies\Assignment 2\login\login\obj\Debug\login.csproj.CoreCompileInputs.cache
+C:\Users\lee_c\Documents\Uni\Case Studies\Assignment 2\login\login\obj\Debug\login.exe
+C:\Users\lee_c\Documents\Uni\Case Studies\Assignment 2\login\login\obj\Debug\login.pdb
+C:\Users\lee_c\Documents\Uni\Case Studies\Assignment 2\login\login\obj\Debug\login.CreateAccount.resources
+C:\Users\lee_c\Documents\Uni\Case Studies\Assignment 2\login\login\obj\Debug\login.Login.resources
