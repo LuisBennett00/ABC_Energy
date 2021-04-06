@@ -74,11 +74,18 @@ namespace ABCEnergy.Forms
          changes have occured when using the application*/
         void bindData()
         {
-            SqlCommand command = new SqlCommand("select * from ABCEnergy_PurchaseOrders_", con);
-            SqlDataAdapter sd = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
-            sd.Fill(dt);
-            dataGridView1.DataSource = dt;
+            try
+            {
+                SqlCommand command = new SqlCommand("select * from ABCEnergy_PurchaseOrders_", con);
+                SqlDataAdapter sd = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                sd.Fill(dt); //TODO: Fix Crash On this line
+                dataGridView1.DataSource = dt;
+            }
+            catch
+            {
+                dataGridView1.DataSource = new DataTable();
+            }
         }
 
 
@@ -86,27 +93,34 @@ namespace ABCEnergy.Forms
          into the database.*/
         private void Btn_Insert_Click(object sender, EventArgs e)
         {
-            //Open and establish a connection with the database
-            con.Open();
+            try
+            {
+                //Open and establish a connection with the database
+                con.Open();
 
-            /*SqlCommand allows for the combination of SQl and C# to amend the database. Here we use the INSERT command to take the values
-             entered by the user in relevant fields, and where neccasry parsing that data to be entered into the database as the correct
-             datatypes.*/
-            SqlCommand command = new SqlCommand("insert into ABCEnergy_PurchaseOrders_ values('" + int.Parse(textBox_PON.Text)+ "','" +  DateTime.Parse(dateTimePicker_POD.Text)
-                                                                                    + "','" +  DateTime.Parse(dateTimePicker_DD.Text)
-                                                                                    + "','" + int.Parse(textBox_Quantity.Text)
-                                                                                    + "','" + textBox_Supplier.Text
-                                                                                    + "','" + float.Parse(textBox_OrderTotal.Text)
-                                                                                    + "','" + comboBox_Approval.Text + "')", con);
+                /*SqlCommand allows for the combination of SQl and C# to amend the database. Here we use the INSERT command to take the values
+                 entered by the user in relevant fields, and where neccasry parsing that data to be entered into the database as the correct
+                 datatypes.*/
+                SqlCommand command = new SqlCommand("insert into ABCEnergy_PurchaseOrders_ values('" + int.Parse(textBox_PON.Text) + "','" + DateTime.Parse(dateTimePicker_POD.Text)
+                                                                                        + "','" + DateTime.Parse(dateTimePicker_DD.Text)
+                                                                                        + "','" + int.Parse(textBox_Quantity.Text)
+                                                                                        + "','" + textBox_Supplier.Text
+                                                                                        + "','" + float.Parse(textBox_OrderTotal.Text)
+                                                                                        + "','" + comboBox_Approval.Text + "')", con);
 
-            //The query is executed
-            command.ExecuteNonQuery();
+                //The query is executed
+                command.ExecuteNonQuery();
 
-            //Alert the user of successfull database insertion
-            MessageBox.Show("Successfully inserted.");
+                //Alert the user of successfull database insertion
+                MessageBox.Show("Successfully inserted.");
 
-            //close the connection as it is no longer needed
-            con.Close();
+                //close the connection as it is no longer needed
+                con.Close();
+            }
+            catch
+            {
+                MessageBox.Show("DATABASE ERROR - Insert Failed");
+            }
 
             //call bindData to update and display the data view with the new inserted data
             bindData();
@@ -116,32 +130,39 @@ namespace ABCEnergy.Forms
          a purchase order record is allowed to be updated base on the users input*/
         private void Btn_update_Click(object sender, EventArgs e)
         {
-            //Open and establish a connection with the database
-            con.Open();
+            try
+            {
+                //Open and establish a connection with the database
+                con.Open();
 
-            /*SqlCommand used to declare a query with C# variables. Here an "UPDATE SET WHERE" qeury is formulated. Based on existing variables,
-             the table is updated setting current collumns equal to the variables in this form. These collumns are identified using the 
-             Purchase Order Number as the unique identifier*/
-            SqlCommand cmd = new SqlCommand("Update ABCEnergy_PurchaseOrders_ set PurchaseOrderDate=@PurchaseOrderDate, Quantity = @Quantity, Supplier = @Supplier, OrderTotal = @OrderTotal, Approval = @Approval WHERE PurchaseOrderNumber = @PurchaseOrderNumber", con);
+                /*SqlCommand used to declare a query with C# variables. Here an "UPDATE SET WHERE" qeury is formulated. Based on existing variables,
+                 the table is updated setting current collumns equal to the variables in this form. These collumns are identified using the 
+                 Purchase Order Number as the unique identifier*/
+                SqlCommand cmd = new SqlCommand("Update ABCEnergy_PurchaseOrders_ set PurchaseOrderDate=@PurchaseOrderDate, Quantity = @Quantity, Supplier = @Supplier, OrderTotal = @OrderTotal, Approval = @Approval WHERE PurchaseOrderNumber = @PurchaseOrderNumber", con);
 
-            /*Where needed, parsing the relevant information and assinging them in the sqlcommand string to set its respective ocject in the 
-             database*/
-            cmd.Parameters.AddWithValue("@PurchaseOrderNumber", int.Parse(textBox_PON.Text));
-            cmd.Parameters.AddWithValue("@PurchaseOrderDate",   DateTime.Parse(dateTimePicker_POD.Text));
-            cmd.Parameters.AddWithValue("@DeliveryDate",        DateTime.Parse(dateTimePicker_DD.Text));
-            cmd.Parameters.AddWithValue("@Quantity",            int.Parse(textBox_Quantity.Text));
-            cmd.Parameters.AddWithValue("@Supplier",            textBox_Supplier.Text);
-            cmd.Parameters.AddWithValue("@OrderTotal",          float.Parse(textBox_OrderTotal.Text));
-            cmd.Parameters.AddWithValue("@Approval",            comboBox_Approval.Text);
+                /*Where needed, parsing the relevant information and assinging them in the sqlcommand string to set its respective ocject in the 
+                 database*/
+                cmd.Parameters.AddWithValue("@PurchaseOrderNumber", int.Parse(textBox_PON.Text));
+                cmd.Parameters.AddWithValue("@PurchaseOrderDate", DateTime.Parse(dateTimePicker_POD.Text));
+                cmd.Parameters.AddWithValue("@DeliveryDate", DateTime.Parse(dateTimePicker_DD.Text));
+                cmd.Parameters.AddWithValue("@Quantity", int.Parse(textBox_Quantity.Text));
+                cmd.Parameters.AddWithValue("@Supplier", textBox_Supplier.Text);
+                cmd.Parameters.AddWithValue("@OrderTotal", float.Parse(textBox_OrderTotal.Text));
+                cmd.Parameters.AddWithValue("@Approval", comboBox_Approval.Text);
 
-            //The query is executed
-            cmd.ExecuteNonQuery();
+                //The query is executed
+                cmd.ExecuteNonQuery();
 
-            //Alert the user of successfully updating the database
-            MessageBox.Show("Successfully Updated");
+                //Alert the user of successfully updating the database
+                MessageBox.Show("Successfully Updated");
 
-            //close the connection as it is no longer needed
-            con.Close();
+                //close the connection as it is no longer needed
+                con.Close();
+            }
+            catch
+            {
+                MessageBox.Show("DATABASE ERROR - Update Failed");
+            }
 
             //call bindData to update and display the data view with the new inserted data
             bindData();
@@ -159,20 +180,27 @@ namespace ABCEnergy.Forms
                  If yes then delete the record, otherwise leave it.*/
                 if (MessageBox.Show("Are you sure you want to delete?", "Delete Purchase Order", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    //Open and establish a connection with the database
-                    con.Open();
+                    try
+                    {
+                        //Open and establish a connection with the database
+                        con.Open();
 
-                    //Using a DELETE WHERE sql command to identify the record linked with the purchase order number
-                    SqlCommand command = new SqlCommand("Delete ABCEnergy_PurchaseOrders_ where PurchaseOrderNumber = '"+int.Parse(textBox_PON.Text)+"'", con);
+                        //Using a DELETE WHERE sql command to identify the record linked with the purchase order number
+                        SqlCommand command = new SqlCommand("Delete ABCEnergy_PurchaseOrders_ where PurchaseOrderNumber = '" + int.Parse(textBox_PON.Text) + "'", con);
 
-                    //The query is executed
-                    command.ExecuteNonQuery();
+                        //The query is executed
+                        command.ExecuteNonQuery();
 
-                    //close the connection as it is no longer needed
-                    con.Close();
+                        //close the connection as it is no longer needed
+                        con.Close();
 
-                    //Alert the user of successfully deletion
-                    MessageBox.Show("Successfully deleted purchase order");
+                        //Alert the user of successfully deletion
+                        MessageBox.Show("Successfully deleted purchase order");
+                    }
+                    catch
+                    {
+                        MessageBox.Show("DATABASE ERROR - Deltetion Falied");
+                    }
 
                     //call bindData to update and display the data view with the new inserted data
                     bindData();
@@ -188,11 +216,19 @@ namespace ABCEnergy.Forms
         //Function to search specific purchase orders based on Purchase Order Number
         private void Btn_Search_Click(object sender, EventArgs e)
         {
-            SqlCommand command = new SqlCommand("select * from ABCEnergy_PurchaseOrders_ where PurchaseOrderNumber = '"+int.Parse(textBox_PON.Text)+"'", con);
-            SqlDataAdapter sd = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
-            sd.Fill(dt);
-            dataGridView1.DataSource = dt;
+            try
+            {
+                SqlCommand command = new SqlCommand("select * from ABCEnergy_PurchaseOrders_ where PurchaseOrderNumber = '" + int.Parse(textBox_PON.Text) + "'", con);
+                SqlDataAdapter sd = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                sd.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
+            catch
+            {
+                dataGridView1.DataSource = new DataTable();
+                MessageBox.Show("DATABASE ERROR - Search Failed");
+            }
         }
 
         SpeechSynthesizer reader = new SpeechSynthesizer();

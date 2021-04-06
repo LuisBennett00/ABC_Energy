@@ -258,7 +258,7 @@
             this.label4.Text = "Delivery Date";
             this.label4.Click += new System.EventHandler(this.Label4_Click_1);
             // 
-            // label5
+            // dateTimePicker_DD
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);

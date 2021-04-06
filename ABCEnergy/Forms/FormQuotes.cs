@@ -84,11 +84,18 @@ namespace ABCEnergy.Forms
          changes have occured when using the application*/
         void bindData()
         {
-            SqlCommand command = new SqlCommand("select * from ABCEnergy_Quotes", con);
-            SqlDataAdapter sd = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
-            sd.Fill(dt);
-            dataGridView_quote.DataSource = dt;
+            try
+            {
+                SqlCommand command = new SqlCommand("select * from ABCEnergy_Quotes", con);
+                SqlDataAdapter sd = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                sd.Fill(dt);
+                dataGridView_quote.DataSource = dt;
+            }
+            catch
+            {
+                dataGridView_quote.DataSource = new DataTable();
+            }
         }
 
 
@@ -120,30 +127,37 @@ namespace ABCEnergy.Forms
              Else all information entered and generated is saved to the database with approval set to un-accepted.*/
             if (MessageBox.Show(body, "Quote", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                //Open and establish a connection with the database
-                con.Open();
+                try
+                {
+                    //Open and establish a connection with the database
+                    con.Open();
 
-                /*SqlCommand allows for the combination of SQl and C# to amend the database. Here we use the INSERT command to take the values
-                entered by the user in relevant fields, and where neccasry parsing that data to be entered into the database as the correct
-                datatypes.*/
-                SqlCommand command = new SqlCommand("insert into ABCEnergy_Quotes values('" + textBox_Supplier.Text
-                                                                                        + "','" + textBox_Item.Text
-                                                                                        + "','" + int.Parse(textBox_Quantity.Text)
-                                                                                        //+ "','" + DateTime.Parse(dateTimePicker_DD.Text)
-                                                                                        + "','" + POGenerator
-                                                                                        + "','" + INGenerator
-                                                                                        + "','" + localDate
-                                                                                        + "','" + orderTotalRan
-                                                                                        + "','" + QTapproved
-                                                                                        + "')", con);
-                //The query is executed
-                command.ExecuteNonQuery();
+                    /*SqlCommand allows for the combination of SQl and C# to amend the database. Here we use the INSERT command to take the values
+                    entered by the user in relevant fields, and where neccasry parsing that data to be entered into the database as the correct
+                    datatypes.*/
+                    SqlCommand command = new SqlCommand("insert into ABCEnergy_Quotes values('" + textBox_Supplier.Text
+                                                                                            + "','" + textBox_Item.Text
+                                                                                            + "','" + int.Parse(textBox_Quantity.Text)
+                                                                                            //+ "','" + DateTime.Parse(dateTimePicker_DD.Text)
+                                                                                            + "','" + POGenerator
+                                                                                            + "','" + INGenerator
+                                                                                            + "','" + localDate
+                                                                                            + "','" + orderTotalRan
+                                                                                            + "','" + QTapproved
+                                                                                            + "')", con);
+                    //The query is executed
+                    command.ExecuteNonQuery();
 
-                //Alert the user of successfull database insertion
-                MessageBox.Show("Quote approved and saved!");
+                    //Alert the user of successfull database insertion
+                    MessageBox.Show("Quote approved and saved!");
 
-                //close the connection as it is no longer needed
-                con.Close();
+                    //close the connection as it is no longer needed
+                    con.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("DATABASE ERROR - Quote Failed to Save");
+                }
 
                 //call bindData to update and display the data view with the new inserted data
                 bindData();
@@ -151,30 +165,37 @@ namespace ABCEnergy.Forms
             }
             else
             {
-                //Open and establish a connection with the database
-                con.Open();
+                try
+                {
+                    //Open and establish a connection with the database
+                    con.Open();
 
-                /*SqlCommand allows for the combination of SQl and C# to amend the database. Here we use the INSERT command to take the values
-                entered by the user in relevant fields, and where neccasry parsing that data to be entered into the database as the correct
-                datatypes.*/
-                SqlCommand command = new SqlCommand("insert into ABCEnergy_Quotes values('" + textBox_Supplier.Text
-                                                                                        + "','" + textBox_Item.Text
-                                                                                        + "','" + int.Parse(textBox_Quantity.Text)
-                                                                                        //+ "','" + DateTime.Parse(dateTimePicker_DD.Text)
-                                                                                        + "','" + POGenerator
-                                                                                        + "','" + INGenerator
-                                                                                        + "','" + localDate
-                                                                                        + "','" + orderTotalRan
-                                                                                        + "','" + QTUnapproved
-                                                                                        + "')", con);
-                //The query is executed
-                command.ExecuteNonQuery();
+                    /*SqlCommand allows for the combination of SQl and C# to amend the database. Here we use the INSERT command to take the values
+                    entered by the user in relevant fields, and where neccasry parsing that data to be entered into the database as the correct
+                    datatypes.*/
+                    SqlCommand command = new SqlCommand("insert into ABCEnergy_Quotes values('" + textBox_Supplier.Text
+                                                                                            + "','" + textBox_Item.Text
+                                                                                            + "','" + int.Parse(textBox_Quantity.Text)
+                                                                                            //+ "','" + DateTime.Parse(dateTimePicker_DD.Text)
+                                                                                            + "','" + POGenerator
+                                                                                            + "','" + INGenerator
+                                                                                            + "','" + localDate
+                                                                                            + "','" + orderTotalRan
+                                                                                            + "','" + QTUnapproved
+                                                                                            + "')", con);
+                    //The query is executed
+                    command.ExecuteNonQuery();
 
-                //Alert the user of successfull database insertion
-                MessageBox.Show("Quote not approved and saved");
+                    //Alert the user of successfull database insertion
+                    MessageBox.Show("Quote not approved and saved");
 
-                //close the connection as it is no longer needed
-                con.Close();
+                    //close the connection as it is no longer needed
+                    con.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("DATABASE ERROR - Quote Failed to Saved");
+                }
 
                 //call bindData to update and display the data view with the new inserted data
                 bindData();
@@ -194,35 +215,51 @@ namespace ABCEnergy.Forms
             //Check allows a user to approve or un-approve a quote. Message box is used to confirm this desicion.
             if (MessageBox.Show(body, "Ammend Quote Approval", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("Update ABCEnergy_Quotes set QuoteApproval = @QuoteApproval WHERE PurchaseOrderNumber = @PurchaseOrderNumber", con);
-                cmd.Parameters.AddWithValue("@PurchaseOrderNumber", int.Parse(textBox_PON.Text));
-                cmd.Parameters.AddWithValue("@QuoteApproval", QTapproved);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("Update ABCEnergy_Quotes set QuoteApproval = @QuoteApproval WHERE PurchaseOrderNumber = @PurchaseOrderNumber", con);
+                    cmd.Parameters.AddWithValue("@PurchaseOrderNumber", int.Parse(textBox_PON.Text));
+                    cmd.Parameters.AddWithValue("@QuoteApproval", QTapproved);
+                    cmd.ExecuteNonQuery();
 
-                //The query is executed
-                cmd.ExecuteNonQuery();
+                    //The query is executed
+                    cmd.ExecuteNonQuery();
 
-                //Alert the user of successfull database insertion
-                MessageBox.Show("Quote approved and saved");
+                    //Alert the user of successfull database insertion
+                    MessageBox.Show("Quote approved and saved");
 
-                //close the connection as it is no longer needed
-                con.Close();
+                    //close the connection as it is no longer needed
+                    con.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("DATABASE ERROR - Quote Failed to Save");
+                }
 
                 //call bindData to update and display the data view with the new inserted data
                 bindData();
             }
             else
             {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("Update ABCEnergy_Quotes set QuoteApproval = @QuoteApproval WHERE PurchaseOrderNumber = @PurchaseOrderNumber AND InvoiceNumber =@InvoiceNumber", con);
-                cmd.Parameters.AddWithValue("@PurchaseOrderNumber", int.Parse(textBox_PON.Text));
-                cmd.Parameters.AddWithValue("@InvoiceNumber", int.Parse(textBox_IN.Text));
-                cmd.Parameters.AddWithValue("@QuoteApproval", QTUnapproved);
-                cmd.ExecuteNonQuery();
 
-                con.Close();
-                MessageBox.Show("Quote not approved and saved");
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("Update ABCEnergy_Quotes set QuoteApproval = @QuoteApproval WHERE PurchaseOrderNumber = @PurchaseOrderNumber AND InvoiceNumber =@InvoiceNumber", con);
+                    cmd.Parameters.AddWithValue("@PurchaseOrderNumber", int.Parse(textBox_PON.Text));
+                    cmd.Parameters.AddWithValue("@InvoiceNumber", int.Parse(textBox_IN.Text));
+                    cmd.Parameters.AddWithValue("@QuoteApproval", QTUnapproved);
+                    cmd.ExecuteNonQuery();
+
+                    con.Close();
+                    MessageBox.Show("Quote not approved and saved");
+                }
+                catch
+                {
+                    MessageBox.Show("DATABASE ERROR - Quote Failed to Save");
+                }
+
                 bindData();
             }
         }
@@ -239,11 +276,20 @@ namespace ABCEnergy.Forms
                  If yes then delete the record, otherwise leave it.*/
                 if (MessageBox.Show("Are you sure you want to delete?", "Delete Purchase Order", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    con.Open();
-                    SqlCommand command = new SqlCommand("Delete ABCEnergy_Quotes where PurchaseOrderNumber = '" + int.Parse(textBox_PON.Text) + "' AND InvoiceNumber = '"+ int.Parse(textBox_IN.Text) +"'", con);
-                    command.ExecuteNonQuery();
-                    con.Close();
-                    MessageBox.Show("Successfully deleted purchase order");
+
+                    try
+                    {
+                        con.Open();
+                        SqlCommand command = new SqlCommand("Delete ABCEnergy_Quotes where PurchaseOrderNumber = '" + int.Parse(textBox_PON.Text) + "' AND InvoiceNumber = '" + int.Parse(textBox_IN.Text) + "'", con);
+                        command.ExecuteNonQuery();
+                        con.Close();
+                        MessageBox.Show("Successfully deleted purchase order");
+                    }
+                    catch
+                    {
+                        MessageBox.Show("DATABASE ERROR - Order Deletion Failed");
+                    }
+
                     bindData();
                 }
             }
@@ -257,11 +303,18 @@ namespace ABCEnergy.Forms
         //Function to search specific purchase orders based on Purchase Order Number
         private void Btn_Search_Click_1(object sender, EventArgs e)
         {
-            SqlCommand command = new SqlCommand("select * from ABCEnergy_Quotes where PurchaseOrderNumber = '" + int.Parse(textBox_PON.Text) + "' AND InvoiceNumber = '" + int.Parse(textBox_IN.Text) + "'", con);
-            SqlDataAdapter sd = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
-            sd.Fill(dt);
-            dataGridView_quote.DataSource = dt;
+            try
+            {
+                SqlCommand command = new SqlCommand("select * from ABCEnergy_Quotes where PurchaseOrderNumber = '" + int.Parse(textBox_PON.Text) + "' AND InvoiceNumber = '" + int.Parse(textBox_IN.Text) + "'", con);
+                SqlDataAdapter sd = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                sd.Fill(dt);
+                dataGridView_quote.DataSource = dt;
+            }
+            catch
+            {
+                dataGridView_quote.DataSource = new DataTable();
+            }
         }
     }
 }
