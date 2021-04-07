@@ -11,8 +11,8 @@ using System.Data.SqlClient;
 
 namespace ABCEnergy
 {
-    //Log in for Public user is   Username = public    Password = pubpass     Usertype = Public
-    //Log in for Staff user is    Username = staff     Password = staffpass   Usertype = Public or Staff (Public will redirect to public page / Staff will redirect to staff page)
+    //Log in for Public user is   Username = publicuser    Password = pubpass     Usertype = Public
+    //Log in for Staff user is    Username = staffuser     Password = staffpass   Usertype = Staff
     public partial class Login : Form
     {
         public Login()
@@ -60,7 +60,7 @@ namespace ABCEnergy
                         }
                         else
                         {
-                            Staff b = new Staff();  
+                            Form1 b = new Form1();  
                             b.Show();
                             this.Hide();
                         }
