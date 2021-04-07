@@ -30,3 +30,41 @@ M:\UNI\Repos\CaseStudies\ABC_Energy\ABCEnergy\obj\Debug\ABCEnergy.exe
 M:\UNI\Repos\CaseStudies\ABC_Energy\ABCEnergy\obj\Debug\ABCEnergy.pdb
 M:\UNI\Repos\CaseStudies\ABC_Energy\ABCEnergy\bin\Debug\ABCEnergy.mdf
 M:\UNI\Repos\CaseStudies\ABC_Energy\ABCEnergy\bin\Debug\ABCEnergy_log.ldf
+<<<<<<< HEAD
+=======
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\bin\Debug\ABCEnergy.mdf
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\bin\Debug\ABCEnergy_log.ldf
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\bin\Debug\ABCEnergy.exe.config
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\bin\Debug\ABCEnergy.exe
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\bin\Debug\ABCEnergy.pdb
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\obj\Debug\ABCEnergy.csprojAssemblyReference.cache
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\obj\Debug\ABCEnergy.Form1.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\obj\Debug\ABCEnergy.Forms.FormContracts.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\obj\Debug\ABCEnergy.Forms.FormProducts.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\obj\Debug\ABCEnergy.Forms.FormPurchaseOrder.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\obj\Debug\ABCEnergy.Forms.FormQuotes.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\obj\Debug\ABCEnergy.Properties.Resources.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\obj\Debug\ABCEnergy.csproj.GenerateResource.cache
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\obj\Debug\ABCEnergy.csproj.CoreCompileInputs.cache
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\obj\Debug\ABCEnergy.exe
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development\ABCEnergy\obj\Debug\ABCEnergy.pdb
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\obj\Debug\ABCEnergy.csprojAssemblyReference.cache
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\obj\Debug\ABCEnergy.CreateAccount.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\obj\Debug\ABCEnergy.Form1.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\obj\Debug\ABCEnergy.Forms.FormContracts.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\obj\Debug\ABCEnergy.Forms.FormProducts.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\obj\Debug\ABCEnergy.Forms.FormPurchaseOrder.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\obj\Debug\ABCEnergy.Forms.FormQuotes.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\obj\Debug\ABCEnergy.Login.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\obj\Debug\ABCEnergy.Properties.Resources.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\obj\Debug\ABCEnergy.csproj.GenerateResource.cache
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\obj\Debug\ABCEnergy.csproj.CoreCompileInputs.cache
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\obj\Debug\ABCEnergy.exe
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\obj\Debug\ABCEnergy.pdb
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\obj\Debug\ABCEnergy.Staff.resources
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\bin\Debug\ABCEnergy.mdf
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\bin\Debug\ABCEnergy_log.ldf
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\bin\Debug\ABCEnergy.exe.config
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\bin\Debug\ABCEnergy.exe
+X:\ABC_Energy-Products\ABC_Energy-Development\ABC_Energy-Development - Copy (2)\ABCEnergy\bin\Debug\ABCEnergy.pdb
+>>>>>>> Merge-login

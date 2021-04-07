@@ -159,5 +159,10 @@ namespace ABCEnergy
             currentButton = null;
             btnCloseChildForm.Visible = false;
         }
+
+        private void panelTitleBar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
