@@ -16,12 +16,14 @@ namespace ABCEnergy.Forms
         public FormProducts()
         {
             InitializeComponent();
-            //LoadTheme();
-            con.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;
-                          AttachDbFilename=|DataDirectory|\localDataBase.mdf;
-                          Integrated Security=True;
-                          Connect Timeout=30;";
-            bindData();
+            //LoadTheme();
+
+
+            DataTable dt = DBManager.getManager().getDataTable("departmentname", "Department");
+            foreach (DataRow dr in dt.Rows)
+            {
+                DeptCombobox.Items.Add(dr["departmentname"].ToString());
+            }
         }
         
 
@@ -30,11 +32,8 @@ namespace ABCEnergy.Forms
             LoadTheme();
         }
 
-        /*Allow for a connection between the application and the database through a connection string.
-         The connection string contains the information that the provider needs to know to establish a connection
-         to the database. Connection string is defines due to its constant use throughout functions, these functions
-         are accessing the same declaration*/
-        SqlConnection con = new SqlConnection();
+
+
         List<checkout_Item> checkout = new List<checkout_Item>();
         
         void UpdateCheckout()
@@ -66,90 +65,32 @@ namespace ABCEnergy.Forms
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-        }
-
-        void bindData()
-        {
-            try
-            {
-                con.Open();
-                SqlCommand cmd = con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select departmentname from Department";
-                cmd.ExecuteNonQuery();
-                DataTable dt = new DataTable();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    DeptCombobox.Items.Add(dr["departmentname"].ToString());
-                }
-                con.Close();
-            }
-            catch 
-            {
-                DeptCombobox.Items.Add("DATABASE ERROR");
-            }
-        }
+        }
 
         private void FormProducts_Load_1(object sender, EventArgs e)
         {
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            CatgCombobox.Items.Clear();
-            if(DeptCombobox.SelectedItem != null)
-            {
-                try
-                {
-                    con.Open();
-                    SqlCommand cmd = con.CreateCommand();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "select categoryName, department.departmentname from Category inner join Department on department.deptID = category.deptID where departmentName = '" + DeptCombobox.SelectedItem.ToString() + "';";
-                    cmd.ExecuteNonQuery();
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    da.Fill(dt);
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        CatgCombobox.Items.Add(dr["categoryName"].ToString());
-                    }
-                    con.Close();
-                }
-                catch
-                {
-                    CatgCombobox.Items.Add("DATABASE ERROR");
-                }
-            }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CatgCombobox.Items.Clear();
+            if(DeptCombobox.SelectedItem != null)
+            {                DataTable dt = DBManager.getManager().select("categoryName, department.departmentname", "Category", "inner join Department on department.deptID = category.deptID where departmentName = '" + DeptCombobox.SelectedItem.ToString() + "'; ");
+                foreach (DataRow dr in dt.Rows)
+                {
+                    CatgCombobox.Items.Add(dr["categoryName"].ToString());
+                }
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (CatgCombobox.SelectedItem != null)
-            {
-                try
-                {
-                    con.Open();
-                    SqlCommand cmd = con.CreateCommand();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "select productID,productName,price,productDesc from Product inner join Category on Product.categoryID = category.categoryID where categoryName = '" + CatgCombobox.SelectedItem.ToString() + "';";
-                    cmd.ExecuteNonQuery();
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    da.Fill(dt);
-                    dataGridView1.DataSource = dt;
-                    con.Close();
-                }
-                catch
-                {
-                    dataGridView1.DataSource = new DataTable("DATABASE ERROR");
-                }
-            }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (CatgCombobox.SelectedItem != null)
+                dataGridView1.DataSource = DBManager.getManager().select("productID, productName, price, productDesc", "Product", "inner join Category on Product.categoryID = category.categoryID where categoryName = '" + CatgCombobox.SelectedItem.ToString() + "'; ");
         }
 
         private void button1_Click(object sender, EventArgs e)
