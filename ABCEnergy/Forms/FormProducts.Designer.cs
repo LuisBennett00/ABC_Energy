@@ -117,6 +117,7 @@
             this.CheckoutGridView.Location = new System.Drawing.Point(18, 611);
             this.CheckoutGridView.Margin = new System.Windows.Forms.Padding(4);
             this.CheckoutGridView.Name = "CheckoutGridView";
+            this.CheckoutGridView.ReadOnly = true;
             this.CheckoutGridView.RowHeadersWidth = 51;
             this.CheckoutGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CheckoutGridView.Size = new System.Drawing.Size(665, 146);
