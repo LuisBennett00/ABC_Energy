@@ -1,6 +1,6 @@
 ﻿namespace ABCEnergy
 {
-    partial class Form1
+    partial class Public
     {
         /// <summary>
         /// Required designer variable.
@@ -34,11 +34,9 @@
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelDesktopPanel = new System.Windows.Forms.Panel();
-            this.btnCloseChildForm = new System.Windows.Forms.Button();
             this.btnContracts = new System.Windows.Forms.Button();
-            this.btnPurchaseOrder = new System.Windows.Forms.Button();
-            this.btnQuote = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
+            this.btnCloseChildForm = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
@@ -48,17 +46,14 @@
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panelMenu.Controls.Add(this.btnContracts);
-            this.panelMenu.Controls.Add(this.btnPurchaseOrder);
-            this.panelMenu.Controls.Add(this.btnQuote);
             this.panelMenu.Controls.Add(this.btnProducts);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelMenu.Location = new System.Drawing.Point(0, 123);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(200, 1254);
-            this.panelMenu.TabIndex = 0;
-            this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
+            this.panelMenu.Size = new System.Drawing.Size(200, 1131);
+            this.panelMenu.TabIndex = 3;
             // 
             // panelLogo
             // 
@@ -70,7 +65,6 @@
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(200, 123);
             this.panelLogo.TabIndex = 0;
-            this.panelLogo.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelLogo_Paint);
             // 
             // label1
             // 
@@ -83,7 +77,6 @@
             this.label1.Size = new System.Drawing.Size(137, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "ABCEnergy";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panelTitleBar
             // 
@@ -91,12 +84,11 @@
             this.panelTitleBar.Controls.Add(this.btnCloseChildForm);
             this.panelTitleBar.Controls.Add(this.lblTitle);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitleBar.Location = new System.Drawing.Point(200, 0);
+            this.panelTitleBar.Location = new System.Drawing.Point(0, 0);
             this.panelTitleBar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(800, 123);
-            this.panelTitleBar.TabIndex = 1;
-            this.panelTitleBar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTitleBar_Paint_1);
+            this.panelTitleBar.Size = new System.Drawing.Size(1000, 123);
+            this.panelTitleBar.TabIndex = 4;
             // 
             // lblTitle
             // 
@@ -104,37 +96,21 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(264, 43);
+            this.lblTitle.Location = new System.Drawing.Point(364, 43);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(112, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "HOME";
-            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // panelDesktopPanel
             // 
             this.panelDesktopPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktopPanel.Location = new System.Drawing.Point(200, 123);
+            this.panelDesktopPanel.Location = new System.Drawing.Point(0, 0);
             this.panelDesktopPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelDesktopPanel.Name = "panelDesktopPanel";
-            this.panelDesktopPanel.Size = new System.Drawing.Size(800, 1131);
-            this.panelDesktopPanel.TabIndex = 2;
-            this.panelDesktopPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDesktopPanel_Paint);
-            // 
-            // btnCloseChildForm
-            // 
-            this.btnCloseChildForm.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCloseChildForm.FlatAppearance.BorderSize = 0;
-            this.btnCloseChildForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseChildForm.Image = global::ABCEnergy.Properties.Resources.cross_out__2_;
-            this.btnCloseChildForm.Location = new System.Drawing.Point(0, 0);
-            this.btnCloseChildForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCloseChildForm.Name = "btnCloseChildForm";
-            this.btnCloseChildForm.Size = new System.Drawing.Size(112, 123);
-            this.btnCloseChildForm.TabIndex = 1;
-            this.btnCloseChildForm.UseVisualStyleBackColor = true;
-            this.btnCloseChildForm.Click += new System.EventHandler(this.BtnCloseChildForm_Click);
+            this.panelDesktopPanel.Size = new System.Drawing.Size(1000, 1254);
+            this.panelDesktopPanel.TabIndex = 5;
             // 
             // btnContracts
             // 
@@ -144,7 +120,7 @@
             this.btnContracts.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnContracts.Image = global::ABCEnergy.Properties.Resources.value;
             this.btnContracts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnContracts.Location = new System.Drawing.Point(0, 399);
+            this.btnContracts.Location = new System.Drawing.Point(0, 215);
             this.btnContracts.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnContracts.Name = "btnContracts";
             this.btnContracts.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
@@ -154,47 +130,7 @@
             this.btnContracts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnContracts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnContracts.UseVisualStyleBackColor = true;
-            this.btnContracts.Click += new System.EventHandler(this.BtnContracts_Click);
-            // 
-            // btnPurchaseOrder
-            // 
-            this.btnPurchaseOrder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPurchaseOrder.FlatAppearance.BorderSize = 0;
-            this.btnPurchaseOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPurchaseOrder.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnPurchaseOrder.Image = global::ABCEnergy.Properties.Resources.shopping_list;
-            this.btnPurchaseOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPurchaseOrder.Location = new System.Drawing.Point(0, 307);
-            this.btnPurchaseOrder.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnPurchaseOrder.Name = "btnPurchaseOrder";
-            this.btnPurchaseOrder.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
-            this.btnPurchaseOrder.Size = new System.Drawing.Size(200, 92);
-            this.btnPurchaseOrder.TabIndex = 3;
-            this.btnPurchaseOrder.Text = "Purchase Orders";
-            this.btnPurchaseOrder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPurchaseOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPurchaseOrder.UseVisualStyleBackColor = true;
-            this.btnPurchaseOrder.Click += new System.EventHandler(this.BtnPurchaseOrder_Click);
-            // 
-            // btnQuote
-            // 
-            this.btnQuote.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnQuote.FlatAppearance.BorderSize = 0;
-            this.btnQuote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuote.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnQuote.Image = global::ABCEnergy.Properties.Resources.bar_chart;
-            this.btnQuote.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuote.Location = new System.Drawing.Point(0, 215);
-            this.btnQuote.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnQuote.Name = "btnQuote";
-            this.btnQuote.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
-            this.btnQuote.Size = new System.Drawing.Size(200, 92);
-            this.btnQuote.TabIndex = 2;
-            this.btnQuote.Text = "Quotes";
-            this.btnQuote.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuote.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnQuote.UseVisualStyleBackColor = true;
-            this.btnQuote.Click += new System.EventHandler(this.BtnQuote_Click);
+            this.btnContracts.Click += new System.EventHandler(this.btnContracts_Click);
             // 
             // btnProducts
             // 
@@ -214,20 +150,31 @@
             this.btnProducts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProducts.UseVisualStyleBackColor = true;
-            this.btnProducts.Click += new System.EventHandler(this.BtnProducts_Click);
+            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
             // 
-            // Form1
+            // btnCloseChildForm
+            // 
+            this.btnCloseChildForm.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnCloseChildForm.FlatAppearance.BorderSize = 0;
+            this.btnCloseChildForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseChildForm.Image = global::ABCEnergy.Properties.Resources.cross_out__2_;
+            this.btnCloseChildForm.Location = new System.Drawing.Point(0, 0);
+            this.btnCloseChildForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCloseChildForm.Name = "btnCloseChildForm";
+            this.btnCloseChildForm.Size = new System.Drawing.Size(112, 123);
+            this.btnCloseChildForm.TabIndex = 1;
+            this.btnCloseChildForm.UseVisualStyleBackColor = true;
+            // 
+            // Public
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1000, 1254);
-            this.Controls.Add(this.panelDesktopPanel);
-            this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Controls.Add(this.panelTitleBar);
+            this.Controls.Add(this.panelDesktopPanel);
+            this.Name = "Public";
+            this.Text = "Public";
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
@@ -240,16 +187,13 @@
         #endregion
 
         private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.Button btnContracts;
         private System.Windows.Forms.Button btnProducts;
         private System.Windows.Forms.Panel panelLogo;
-        private System.Windows.Forms.Button btnContracts;
-        private System.Windows.Forms.Button btnPurchaseOrder;
-        private System.Windows.Forms.Button btnQuote;
-        private System.Windows.Forms.Panel panelTitleBar;
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panelDesktopPanel;
+        private System.Windows.Forms.Panel panelTitleBar;
         private System.Windows.Forms.Button btnCloseChildForm;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Panel panelDesktopPanel;
     }
 }
-

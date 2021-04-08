@@ -54,7 +54,7 @@ namespace ABCEnergy
                         MessageBox.Show("Logged in successfully as "+dt.Rows[i]["usertype"]);
                         if(userType.SelectedIndex == 0) //0 is Public in the userType Combobox
                         {
-                            Form1 a = new Form1();
+                            Public a = new Public();
                             a.Show();
                             this.Hide();
                         }
