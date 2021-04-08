@@ -32,7 +32,8 @@ namespace ABCEnergy.Forms
             InitializeComponent();
 
             //bindData is called to display current purchase orders saved in the SQL database
-            bindData();
+            dataGridView1.DataSource = DBManager.getManager().getDataTable("*", "ABCEnergy_PurchaseOrders_");
+
 
             label_speechRate.Text = speechRate.ToString(CultureInfo.InvariantCulture);
             label_speechRate.Text = speechVolume.ToString(CultureInfo.InvariantCulture);
@@ -69,61 +70,18 @@ namespace ABCEnergy.Forms
         SqlConnection con = new SqlConnection("Data Source=THE_BEAST_00;Initial Catalog=ABCEnergy;Integrated Security=True");
 
 
-        /*Bind data establishes a connection with a specific table within the database. The specific use of bind data in this form fills
-         the data view grid with stored information in the database, it is called to refresh values in the database to display values after 
-         changes have occured when using the application*/
-        void bindData()
-        {
-            try
-            {
-                SqlCommand command = new SqlCommand("select * from ABCEnergy_PurchaseOrders_", con);
-                SqlDataAdapter sd = new SqlDataAdapter(command);
-                DataTable dt = new DataTable();
-                sd.Fill(dt); //TODO: Fix Crash On this line
-                dataGridView1.DataSource = dt;
-            }
-            catch
-            {
-                dataGridView1.DataSource = new DataTable();
-            }
-        }
-
-
         /*This function is called when the insert button within this form is pressed. This function creats and inserts data entered by a user
          into the database.*/
         private void Btn_Insert_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //Open and establish a connection with the database
-                con.Open();
-
-                /*SqlCommand allows for the combination of SQl and C# to amend the database. Here we use the INSERT command to take the values
-                 entered by the user in relevant fields, and where neccasry parsing that data to be entered into the database as the correct
-                 datatypes.*/
-                SqlCommand command = new SqlCommand("insert into ABCEnergy_PurchaseOrders_ values('" + int.Parse(textBox_PON.Text) + "','" + DateTime.Parse(dateTimePicker_POD.Text)
-                                                                                        + "','" + DateTime.Parse(dateTimePicker_DD.Text)
-                                                                                        + "','" + int.Parse(textBox_Quantity.Text)
-                                                                                        + "','" + textBox_Supplier.Text
-                                                                                        + "','" + float.Parse(textBox_OrderTotal.Text)
-                                                                                        + "','" + comboBox_Approval.Text + "')", con);
-
-                //The query is executed
-                command.ExecuteNonQuery();
-
-                //Alert the user of successfull database insertion
+        {   //if insert is succesful then show succsess message else show error message
+            if(DBManager.getManager().insert("ABCEnergy_PurchaseOrders_", int.Parse(textBox_PON.Text) + "','" + DateTime.Parse(dateTimePicker_POD.Text) + "','" + DateTime.Parse(dateTimePicker_DD.Text) + "','" + int.Parse(textBox_Quantity.Text) + "','" + textBox_Supplier.Text + "','" + float.Parse(textBox_OrderTotal.Text) + "','" + comboBox_Approval.Text))
                 MessageBox.Show("Successfully inserted.");
-
-                //close the connection as it is no longer needed
-                con.Close();
-            }
-            catch
-            {
+            else
                 MessageBox.Show("DATABASE ERROR - Insert Failed");
-            }
 
             //call bindData to update and display the data view with the new inserted data
-            bindData();
+            dataGridView1.DataSource = DBManager.getManager().getDataTable("*", "ABCEnergy_PurchaseOrders_");
+
         }
 
         /*Function is called when the update button is clicked. Based on the purchase order which is used a unique identifier,
@@ -165,7 +123,8 @@ namespace ABCEnergy.Forms
             }
 
             //call bindData to update and display the data view with the new inserted data
-            bindData();
+            dataGridView1.DataSource = DBManager.getManager().getDataTable("*", "ABCEnergy_PurchaseOrders_");
+
         }
 
 
@@ -180,30 +139,15 @@ namespace ABCEnergy.Forms
                  If yes then delete the record, otherwise leave it.*/
                 if (MessageBox.Show("Are you sure you want to delete?", "Delete Purchase Order", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    try
-                    {
-                        //Open and establish a connection with the database
-                        con.Open();
-
-                        //Using a DELETE WHERE sql command to identify the record linked with the purchase order number
-                        SqlCommand command = new SqlCommand("Delete ABCEnergy_PurchaseOrders_ where PurchaseOrderNumber = '" + int.Parse(textBox_PON.Text) + "'", con);
-
-                        //The query is executed
-                        command.ExecuteNonQuery();
-
-                        //close the connection as it is no longer needed
-                        con.Close();
-
-                        //Alert the user of successfully deletion
+                    //if delete successful then  show success message else show error message
+                    if (DBManager.getManager().delete("ABCEnergy_PurchaseOrders_", "PurchaseOrderNumber = '" + int.Parse(textBox_PON.Text) + "'"))
                         MessageBox.Show("Successfully deleted purchase order");
-                    }
-                    catch
-                    {
+                    else
                         MessageBox.Show("DATABASE ERROR - Deltetion Falied");
-                    }
 
                     //call bindData to update and display the data view with the new inserted data
-                    bindData();
+                    dataGridView1.DataSource = DBManager.getManager().getDataTable("*", "ABCEnergy_PurchaseOrders_");
+
                 }
             }
             else
@@ -216,19 +160,7 @@ namespace ABCEnergy.Forms
         //Function to search specific purchase orders based on Purchase Order Number
         private void Btn_Search_Click(object sender, EventArgs e)
         {
-            try
-            {
-                SqlCommand command = new SqlCommand("select * from ABCEnergy_PurchaseOrders_ where PurchaseOrderNumber = '" + int.Parse(textBox_PON.Text) + "'", con);
-                SqlDataAdapter sd = new SqlDataAdapter(command);
-                DataTable dt = new DataTable();
-                sd.Fill(dt);
-                dataGridView1.DataSource = dt;
-            }
-            catch
-            {
-                dataGridView1.DataSource = new DataTable();
-                MessageBox.Show("DATABASE ERROR - Search Failed");
-            }
+            dataGridView1.DataSource = DBManager.getManager().select("*", "ABCEnergy_PurchaseOrders_", "where PurchaseOrderNumber = '" + int.Parse(textBox_PON.Text) + "'");
         }
 
         SpeechSynthesizer reader = new SpeechSynthesizer();
