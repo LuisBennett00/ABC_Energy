@@ -55,6 +55,7 @@ namespace ABCEnergy
                         if(userType.SelectedIndex == 0) //0 is Public in the userType Combobox
                         {
                             Form1 a = new Form1();
+                            a.User = "Public";
                             a.Show();
                             this.Hide();
                         }

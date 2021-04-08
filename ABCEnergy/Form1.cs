@@ -45,11 +45,18 @@ namespace ABCEnergy
             string color = ThemeColour.ColorList[index];
             return ColorTranslator.FromHtml(color);
         }
+        public string User { get; set; }
 
 
         //Method used to set the theme and call methods to allow for a colour coordinated UI.
         private void ActivateButton(object btnSender)
         {
+            if(User=="Public")
+            {
+                btnContracts.Visible = false;
+                btnPurchaseOrder.Visible = false;
+                btnQuote.Visible = false;
+            }
             if(btnSender != null)
             {
                 if(currentButton != (Button)btnSender)
